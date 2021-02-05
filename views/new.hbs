@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="pt-3 m-3"><sup>*</sup>為必填</div>
+    <form action="">
+        <div class="form-group row">
+            <label for="text" class="col-4 col-form-label">名稱<sup>*</sup></label>
+            <div class="col-8">
+                <input id="text" name="text" placeholder="輸入支出項目名稱" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="text1" class="col-4 col-form-label">日期<sup>*</sup></label>
+            <div class="col-8">
+                <input id="text1" name="text1" placeholder="日期" type="datetime-local" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="select" class="col-4 col-form-label">類別<sup>*</sup></label>
+            <div class="col-8">
+                <select name="category" id="category" class="form-control fas">
+                    <option selected>選擇類別</option>
+                    <option value="fas fa-home"> &#xf015; 家居物業</option>
+                    <option value="fas fa-shuttle-van"> &#xf5b6; 交通出行 </option>
+                    <option value="fas fa-grin-beam"> &#xf582; 休閒娛樂</option>
+                    <option value="fas fa-utensils"> &#xf2e7; 餐飲食品</option>
+                    <option value="fas fa-pen"> &#xf304; 其他</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="text2" class="col-4 col-form-label">金額<sup>*</sup></label>
+            <div class="col-8">
+                <input id="text2" name="text2" placeholder="輸入數字" type="number" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+                <button name="submit" type="submit" class="button">送出</button>
+            </div>
+        </div>
+    </form>
+</div>

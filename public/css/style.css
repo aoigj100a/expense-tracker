@@ -1,0 +1,58 @@
+/* 類別 */
+.select-w{
+    min-width: 100%;
+    height: 50px;
+    font-size: 36px;
+}
+
+/* 總額 */
+.total-amount{
+    min-width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* 按鈕設定 */
+.button {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 24px;
+    border: 2px solid #b3b3b3;
+    border-radius: 8px;
+    background: #adadad;
+    font: normal normal bold 20px arial;
+    color: #111111;
+    text-decoration: none;
+}
+.button:hover,
+.button:focus {
+    border: 2px solid #ffffff;
+    background: #d0d0d0;
+    color: #111111;
+    text-decoration: none;
+}
+.button:active {
+    background: #686868;
+}
+.button:before{
+    content:  "\0000a0";
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    margin: 0 4px -6px -4px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA6UlEQVRIib2VTQ6DIBCFP2kXjZdovFHvv2m61AMYN8VuAPmVgNCXECY4eTM8X5gBEHSEJpeJ77JF7N9AtI7twxcwA3vlmhVH0LFeV8jtIoZzUIHWa/erV8LwljpoVau4ksb3JHcDnir+AI+T3JsO7mpP2dSG5Og+ly+plKgY+gapQhtHt7b2diwI5dJ8py5agSlBPFpnI/D2zqpdVALpVFK77yJfoknFdscxiQIXmYoeUlYccSXx8RcXSXBvkCsmcGXJ5QLuP4D8WxRzUQyGt+djB4QDYmlAvuCOgG4DJzrRmqPERdXoOvR/C5dlruZdaZYAAAAASUVORK5CYII=") no-repeat left center transparent;
+    background-size: 100% 100%;
+}
+
+select {
+    font-family: 'Lato', 'Font Awesome 5 Free';
+    font-weight: 900;
+}
