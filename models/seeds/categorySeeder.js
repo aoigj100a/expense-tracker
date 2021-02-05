@@ -12,6 +12,8 @@ db.once('open', () => {
             }else{
                 console.log('儲存成功:', docs)
             }
-            db.close()
+            db.close(()=>{
+                console.log('db closed')
+            })
         })
 })

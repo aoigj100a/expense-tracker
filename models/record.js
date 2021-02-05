@@ -5,31 +5,29 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const RecordSchema = new Schema({
-    id: {
-        type: Number, 
-        unique: true ,
-        required: true
-      },
-      name: {
-        type:String,
-        unique: true,
-        required: true
-      },
-      category: {
-        type:String,
-        unique: true,
-        required: true
-      },
-      date: {
-        type: Date,
-        required: true,
-        default: Date.now
-        },
-      amount: {
-        type:String,
-        unique: true,
-        required: true
-      },
+  id: {
+    type: Number,
+    unique: true,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  category: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  amount: {
+    type: String,
+    unique: true,
+    required: true
+  },
 })
 const Record = mongoose.model('Record', RecordSchema)
 module.exports = Record

@@ -1,7 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const mongoose = require('mongoose')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 // const methodOverride = require('method-override')
 
 const app = express()
@@ -11,8 +10,8 @@ const port = 3000
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
-//安置靜態資源
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //取得db連線
 require('./config/mongoose')
@@ -23,6 +22,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/new', (req, res) => {
+    res.render('new')
+})
+app.post('/new', (req, res) => {
+    console.log(req.body)
     res.render('new')
 })
 
