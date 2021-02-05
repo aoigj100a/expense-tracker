@@ -1,0 +1,34 @@
+{
+    "category": [
+      {
+        "c-name-ch": "家居物業",
+        "c-name": "home",
+        "c-icon-i": "fas fa-home",
+        "c-icon-css":"&#xf015;"
+      },
+      {
+        "c-name-ch": "交通出行",
+        "c-name": "transportation",
+        "c-icon-i": "fas fa-shuttle-van",
+        "c-icon-css":"&#xf5b6;"
+      },
+      {
+        "c-name-ch": "休閒娛樂",
+        "c-name": "entertainment",
+        "c-icon-i": "fas fa-grin-beam",
+        "c-icon-css":"&#xf582;"
+      },
+      {
+        "c-name-ch": "餐飲食品",
+        "c-name": "food",
+        "c-icon-i": "fas fa-utensils",
+        "c-icon-css":"&#xf2e7;"
+      },
+      {
+        "c-name-ch": "其他",
+        "c-name": "other",
+        "c-icon-i": "fas fa-pen" ,
+        "c-icon-css":"&#xf304;"
+      }
+    ]
+  }

@@ -15,18 +15,10 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 //取得db連線
-mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
-db.on('error', () => {
-    console.log('mongoDB error!')
-})
-db.once('open', () => {
-    console.log('mongoDB connected!')
-})
+require('./config/mongoose')
 
 //路由設定
 app.get('/', (req, res) => {
-    // res.send('專案初始化1')
     res.render('index')
 })
 
