@@ -5,35 +5,35 @@
         "name":"食材",
         "date":"2021-02-03T11:05",
         "category": "food",
-        "amount":"100"
+        "amount":100
       },
       {
         "id": 2,
         "name":"看醫生",
         "date":"2021-02-04T14:17",
         "category": "home",
-        "amount":"150"
+        "amount":150
       },
       {
         "id": 3,
         "name":"伴手禮",
         "date":"2021-02-04T21:03",
         "category": "home",
-        "amount":"600"
+        "amount":600
       },
       {
         "id": 4,
         "name":"晚餐",
         "date":"2021-02-05T19:30",
         "category": "home",
-        "amount":"100"
+        "amount":100
       },
       {
         "id": 5,
         "name":"綠蓋",
         "date":"2021-02-05T20:00",
         "category": "home",
-        "amount":"75"
+        "amount":75
       }
     ]
   }

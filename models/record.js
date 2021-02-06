@@ -24,7 +24,7 @@ const RecordSchema = new Schema({
     required: true
   },
   amount: {
-    type: String,
+    type: Number,
     unique: true,
     required: true
   },

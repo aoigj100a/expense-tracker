@@ -33,15 +33,14 @@ app.get('/', async (req, res) => {
                     (categories) => {
                         if (categories.cName == record.category) {
                             category = categories.cIconI
-                            record.icon= category
+                            record.icon = category
                             return category
                         }
                     }
                 )
             })
-            res.render('index', { records, totalAmount, categoryList })
-        })
-        .catch(error => console.log(error))
+            res.render('index', { records, totalAmount })
+        }).catch(error => console.log(error))
 
 })
 
@@ -64,6 +63,10 @@ app.get('/edit', (req, res) => {
 
 app.get('/delete', (req, res) => {
     res.render('delete')
+})
+
+app.get('/search/:category', (req, res) => {
+    res.render('index')
 })
 
 app.listen(port, () => {
