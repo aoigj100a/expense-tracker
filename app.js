@@ -1,7 +1,10 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 // const methodOverride = require('method-override')
+const Record = require('./models/record')
+const Category = require('./models/category')
 
 const app = express()
 const port = 3000
@@ -10,6 +13,7 @@ const port = 3000
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+mongoose.set('useCreateIndex', true);
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -17,16 +21,41 @@ app.use(bodyParser.urlencoded({ extended: true }))
 require('./config/mongoose')
 
 //路由設定
-app.get('/', (req, res) => {
-    res.render('index')
+app.get('/', async (req, res) => {
+    const categoryList = await Category.find().lean().exec()
+    Record.find().lean()
+        .then(records => {
+            let totalAmount = 0
+            let category = ""
+            records.forEach(record => {
+                totalAmount += record.amount
+                categoryList.forEach(
+                    (categories) => {
+                        if (categories.cName == record.category) {
+                            category = categories.cIconI
+                            record.icon= category
+                            return category
+                        }
+                    }
+                )
+            })
+            res.render('index', { records, totalAmount, categoryList })
+        })
+        .catch(error => console.log(error))
+
 })
 
 app.get('/new', (req, res) => {
     res.render('new')
 })
-app.post('/new', (req, res) => {
+app.post('/new', async (req, res) => {
     console.log(req.body)
-    res.render('new')
+    const count = await Record.countDocuments({}).exec()
+    const id = count + 1
+    const { name, date, category, amount } = req.body
+    return Record.create({ id, name, date, category, amount })
+        .then(() => res.redirect('/'))
+        .catch(error => console.log(error))
 })
 
 app.get('/edit', (req, res) => {

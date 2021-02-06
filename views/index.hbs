@@ -1,22 +1,26 @@
 <div class="container">
-    <form action="" class="">
-        <select name="category" id="category" class="form-control fas">
-            <option selected>選擇類別</option>
-            <option value="home"> &#xf015; 家居物業</option>
-            <option value="transportation"> &#xf5b6; 交通出行 </option>
-            <option value="entertainment"> &#xf582; 休閒娛樂</option>
-            <option value="food"> &#xf2e7; 餐飲食品</option>
-            <option value="other"> &#xf304; 其他</option>
-        </select>
+    <form action="/search">
+        <div class="input-group">
+            <select name="category" id="category" class="form-control fas">
+                <option selected>選擇類別</option>
+                <option value="home"> &#xf015; 家居物業</option>
+                <option value="transportation"> &#xf5b6; 交通出行 </option>
+                <option value="entertainment"> &#xf582; 休閒娛樂</option>
+                <option value="food"> &#xf2e7; 餐飲食品</option>
+                <option value="other"> &#xf304; 其他</option>
+            </select>
+            <button type="submit" class="btn">送出</button>
+        </div>
     </form>
     <div class="total-amount">
         <h1 id="totalAmount">10,000</h1>
     </div>
     <ul class="list-group list-group-flush">
+        {{#each records}}
         <li
             class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center">
-            <h5><i class="fas fa-utensils"></i>蘋果</h5>
-            <h5>10</h5>
+            <div><h5><i class="{{this.icon}}"></i>{{this.name}}</h5></div>
+            <div><h5>{{this.amount}}</h5></div>
             <div>
                 <a class="btn" href="/edit">
                     <i class="fas fa-edit"></i>
@@ -26,6 +30,7 @@
                 </a>
             </div>
         </li>
+        {{/each}}
         <div class="d-flex justify-content-center">
             <a class="button my-auto" href="/new"></a>
         </div>

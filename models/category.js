@@ -2,16 +2,16 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const categorySchema = new Schema({
-  "c-name-ch": {
+  "cNameCh": {
     type: String,
   },
-  "c-name": {
+  "cName": {
     type: String,
   },
-  "c-icon-i": {
+  "cIconI": {
     type: String,
   },
-  "c-icon-css": {
+  "cIconCss": {
     type: String,
   },
 })
