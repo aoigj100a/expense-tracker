@@ -10,7 +10,13 @@ const app = express()
 const port = 3000
 
 //啟動樣版引擎
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs({
+    defaultLayout: 'main', extname: '.hbs', helpers: {
+        eq: function (a, b) {
+            return a === b
+        },
+    },
+}))
 app.set('view engine', 'hbs')
 
 mongoose.set('useCreateIndex', true);
@@ -57,8 +63,36 @@ app.post('/new', async (req, res) => {
         .catch(error => console.log(error))
 })
 
-app.get('/edit/:id', (req, res) => {
-    res.render('edit')
+app.get('/edit/:id', async (req, res) => {
+    const id = req.params.id
+    const categoryList = await Category.find().lean().exec()
+    Record.findOne({ id: id }).lean()
+        .then(record => {
+            let _category = ""
+            categoryList.forEach((acategory) => {
+                if (acategory.cName === record.category) {
+                    _category = acategory.cIconCss
+                    record.icon = _category
+                }
+                // console.log(record.icon)
+            })
+            res.render('edit', { record })
+        }).catch(error => console.log(error))
+})
+
+app.post('/edit/:id',(req, res) => {
+    const id = req.params.id
+    const { name, category, amount } = req.body
+    // console.log(req.body)
+    Record.findOne({ id: id })
+        .then(record => {
+            record.name = name
+            record.category = category
+            record.amount = amount
+            return record.save()
+        })
+        .then(() => res.redirect('/'))
+        .catch(error => console.log(error))
 })
 
 app.get('/delete/:id', (req, res) => {
@@ -70,7 +104,7 @@ app.get('/delete/:id', (req, res) => {
 
 })
 
-app.post('/delete/:id/y', (req, res) => {
+app.post('/delete/:id', (req, res) => {
     const id = req.params.id
     return Record.findOne({ id: id })
         .then(record => record.remove())
