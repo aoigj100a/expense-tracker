@@ -56,3 +56,14 @@ select {
     font-family: 'Lato', 'Font Awesome 5 Free';
     font-weight: 900;
 }
+
+.de-cont{
+    margin: 50px 200px 50px 200px;
+    padding: 50px;
+    border-radius: 8px;
+    border:1px solid #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
