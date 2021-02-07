@@ -26,7 +26,7 @@
 #### 下載專案
 
 ```
-git clone 
+git clone https://github.com/aoigj100a/expense-tracker.git
 ```
 
 #### 移動至專案資料夾
