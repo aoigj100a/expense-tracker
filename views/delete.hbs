@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/record/delete/{{Record.id}}" class="de-cont my-5" method="POST">
+    <form action="/record/{{Record.id}}?_method=DELETE" class="de-cont my-5" method="POST">
         <h5>要刪除【{{Record.name}}】項目嗎？</h5>
         <button type="submit" class="btn btn-success">確定</button>
     </form>

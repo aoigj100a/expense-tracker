@@ -9,7 +9,6 @@ router.get('/new', (req, res) => {
     res.render('new')
 })
 router.post('/new', async (req, res) => {
-    // console.log(req.body)
     const count = await Record.countDocuments({}).exec()
     const id = count + 1
     const { name, date, category, amount } = req.body
@@ -18,7 +17,7 @@ router.post('/new', async (req, res) => {
         .catch(error => console.log(error))
 })
 
-router.get('/edit/:id', async (req, res) => {
+router.get('/:id/edit', async (req, res) => {
     const id = req.params.id
     const categoryList = await Category.find().lean().exec()
     Record.findOne({ id: id }).lean()
@@ -35,12 +34,15 @@ router.get('/edit/:id', async (req, res) => {
         }).catch(error => console.log(error))
 })
 
-router.post('/edit/:id', (req, res) => {
+router.put('/:id',async (req, res) => {
+    const count = await Record.countDocuments({}).exec()
     const id = req.params.id
     const { name, category, amount } = req.body
     // console.log(req.body)
     Record.findOne({ id: id })
         .then(record => {
+            //有修改的id bug 待修正
+            //let newId = ""
             record.name = name
             record.category = category
             record.amount = amount
@@ -50,7 +52,7 @@ router.post('/edit/:id', (req, res) => {
         .catch(error => console.log(error))
 })
 
-router.get('/delete/:id', (req, res) => {
+router.get('/:id/delete', (req, res) => {
     // console.log(req.params)
     const id = req.params.id
     Record.findOne({ id: id }).lean()
@@ -59,7 +61,7 @@ router.get('/delete/:id', (req, res) => {
 
 })
 
-router.post('/delete/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const id = req.params.id
     return Record.findOne({ id: id })
         .then(record => record.remove())
