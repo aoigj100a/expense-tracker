@@ -1,3 +1,38 @@
+/* 顏色 */
+:root{
+    --mwt:#fff;
+    --mbk:#3C3C3C;
+    --main1:#ffd6eb;
+    --main2:#e275ac;
+    --main3:#820041;
+}
+
+.navbar{
+    background:var(--mbk);
+    
+}
+
+.navbar a{
+    font-weight: bold ;
+    color: var(--main1);
+}
+
+.navbar a:hover{
+    color: var(--mwt);
+}
+
+main{
+    background: var(--main2);
+}
+
+.con-body{
+    padding: 20px;
+    background-color: var(--mwt);
+    border-radius: 8px;
+    border:1px solid var(--main3);
+    box-shadow: -1px 1px 8px var(--main3);
+}
+
 /* 類別 */
 .select-w{
     min-width: 100%;
@@ -12,6 +47,7 @@
     display: flex;
     justify-content:center;
     align-items:center;
+    padding: 50px;
 }
 
 /* 按鈕設定 */
@@ -21,22 +57,23 @@
     text-align: center;
     vertical-align: middle;
     padding: 12px 24px;
-    border: 2px solid #b3b3b3;
+    border: 1px solid var(--main3);
     border-radius: 8px;
-    background: #adadad;
+    background: var(--main2);
     font: normal normal bold 20px arial;
     color: #111111;
     text-decoration: none;
 }
 .button:hover,
 .button:focus {
-    border: 2px solid #ffffff;
-    background: #d0d0d0;
-    color: #111111;
+    border: 1px solid #ffffff;
+    background: var(--main3);
+    color: var(--mwt);
     text-decoration: none;
 }
 .button:active {
-    background: #686868;
+    color: var(--mwt);
+    background: var(--main3);
 }
 .button:before{
     content:  "\0000a0";
@@ -58,12 +95,18 @@ select {
 }
 
 .de-cont{
-    margin: 50px 200px 50px 200px;
+    margin: 0px 200px 0px 200px;
     padding: 50px;
+    background-color: var(--mwt);
     border-radius: 8px;
-    border:1px solid #111111;
+    border:1px solid var(--main3);
+    box-shadow: -1px 1px 8px var(--main3);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.form-group:last-child{
+    margin-bottom: 0;
 }

@@ -1,37 +1,47 @@
-<div class="container">
-    <form action="/record">
-        <div class="input-group">
-            <select name="category" id="category" class="form-control fas">
-                <option selected>選擇類別</option>
-                <option value="home"{{#if (eq filter 'home')}}selected{{/if}}> &#xf015; 家居物業</option>
-                <option value="transportation"{{#if (eq filter 'transportation')}}selected{{/if}}> &#xf5b6; 交通出行 </option>
-                <option value="entertainment"{{#if (eq filter 'entertainment')}}selected{{/if}}> &#xf582; 休閒娛樂</option>
-                <option value="food"{{#if (eq filter 'food')}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
-                <option value="other"{{#if (eq filter 'other')}}selected{{/if}}> &#xf304; 其他</option>
-            </select>
-            <button type="submit" class="btn">送出</button>
-        </div>
-    </form>
-    <div class="total-amount">
-        <h1 id="totalAmount">{{totalAmount}}</h1>
-    </div>
-    <ul class="list-group list-group-flush">
-        {{#each records}}
-        <li
-            class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center">
-            <div><h5><i class="{{this.icon}}"></i>{{this.name}}</h5></div>
-            <div><h5>{{this.amount}}</h5></div>
-            <div>
-                <a class="btn" href="/record/{{this.id}}/edit">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <a class="btn" href="/record/{{this.id}}/delete">
-                    <i class="fas fa-minus"></i>
-                </a>
+<div class="container py-5 d-flex justify-content-between align-items-center flex-column">
+    <a href="/"><img class="p-4" src="/img/icon.png" alt="" style="width: 200px;"></a>
+    
+    <div class="con-body align-self-stretch">
+        <form action="/record">
+            <div class="input-group pt-4">
+                <select name="category" id="category" class="form-control fas">
+                    <option selected>選擇類別</option>
+                    <option value="home" {{#if (eq filter 'home' )}}selected{{/if}}> &#xf015; 家居物業</option>
+                    <option value="transportation" {{#if (eq filter 'transportation' )}}selected{{/if}}> &#xf5b6; 交通出行
+                    </option>
+                    <option value="entertainment" {{#if (eq filter 'entertainment' )}}selected{{/if}}> &#xf582; 休閒娛樂
+                    </option>
+                    <option value="food" {{#if (eq filter 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
+                    <option value="other" {{#if (eq filter 'other' )}}selected{{/if}}> &#xf304; 其他</option>
+                </select>
+                <button type="submit" class="btn">送出</button>
             </div>
-        </li>
-        {{/each}}
-        <div class="d-flex justify-content-center">
-            <a class="button my-auto" href="/record/new"></a>
+        </form>
+        <div class="total-amount">
+            <h1 id="totalAmount">{{totalAmount}}</h1>
         </div>
+        <ul class="list-group list-group-flush">
+            {{#each records}}
+            <li
+                class="list-group-item list-group-item-action list-group-item-light d-flex justify-content-between align-items-center">
+                <div>
+                    <h5><i class="{{this.icon}}"></i>{{this.name}}:{{this.amount}}</h5>
+                </div>
+                
+                    
+                
+                <div>
+                    <a class="btn" href="/record/{{this.id}}/edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn" href="/record/{{this.id}}/delete">
+                        <i class="fas fa-minus"></i>
+                    </a>
+                </div>
+            </li>
+            {{/each}}
+            <div class="d-flex justify-content-center p-2">
+                <a class="button my-auto" href="/record/new"></a>
+            </div>
+    </div>
 </div>

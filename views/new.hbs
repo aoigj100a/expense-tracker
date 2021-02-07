@@ -1,41 +1,50 @@
 <div class="container">
-    <div class="pt-3 m-3"><sup>*</sup>為必填</div>
-    <form action="/record/new" method="POST">
-        <div class="form-group row">
-            <label for="name" class="col-4 col-form-label">名稱<sup>*</sup></label>
-            <div class="col-8">
-                <input id="name" name="name" placeholder="輸入支出項目名稱" type="text" class="form-control">
+    <br>
+    <div class="con-body">
+        <div class="pt-5 ml-5"><sup>*</sup>為必填</div>
+         <form action="/record/new" method="POST">
+            <div class="form-group row">
+                <label for="name" class="col-4 col-form-label text-right">名稱<sup>*</sup></label>
+                <div class="col-8">
+                    <input id="name" name="name" placeholder="輸入支出項目名稱" type="text" class="form-control"
+                        >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="date" class="col-4 col-form-label">日期<sup>*</sup></label>
-            <div class="col-8">
-                <input id="date" name="date" placeholder="日期" type="datetime-local" class="form-control">
+            <div class="form-group row">
+                <label for="date" class="col-4 col-form-label text-right">日期<sup>*</sup></label>
+                <div class="col-8">
+                    <input id="date" name="date" placeholder="日期" type="text" class="form-control"
+                        >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="select" class="col-4 col-form-label">類別<sup>*</sup></label>
-            <div class="col-8">
-                <select name="category" id="category" class="form-control fas">
-                    <option selected>選擇類別</option>
-                    <option value="home"> &#xf015; 家居物業</option>
-                    <option value="transportation"> &#xf5b6; 交通出行 </option>
-                    <option value="entertainment"> &#xf582; 休閒娛樂</option>
-                    <option value="food"> &#xf2e7; 餐飲食品</option>
-                    <option value="other"> &#xf304; 其他</option>
-                </select>
+            <div class="form-group row">
+                <label for="select" class="col-4 col-form-label text-right">類別<sup>*</sup></label>
+                <div class="col-8">
+                    <select name="category" id="category" class="form-control fas">
+                        <option selected>選擇類別</option>
+                        <option value="home"> &#xf015; 家居物業</option>
+                        <option value="transportation" >
+                            &#xf5b6; 交通出行 </option>
+                        <option value="entertainment" >
+                            &#xf582; 休閒娛樂</option>
+                        <option value="food"> &#xf2e7; 餐飲食品</option>
+                        <option value="other"> &#xf304; 其他</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="amount" class="col-4 col-form-label">金額<sup>*</sup></label>
-            <div class="col-8">
-                <input id="amount" name="amount" placeholder="輸入數字" type="number" class="form-control">
+            <div class="form-group row">
+                <label for="amount" class="col-4 col-form-label text-right">金額<sup>*</sup></label>
+                <div class="col-8">
+                    <input id="amount" name="amount" placeholder="輸入數字" type="number" class="form-control"
+                        >
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="offset-4 col-8">
-                <button type="submit" class="button">送出</button>
+            <div class="form-group row">
+                <div class="offset-4 col-8">
+                    <button type="submit" class="button">送出</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+    <br>
 </div>
