@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const db = mongoose.connection
-
-mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/expense-tracker'
+mongoose.connect( MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 db.on('error', () => console.log('MongoDB error!'))
 db.once('open', () => console.log('MongoDB connected!'))
