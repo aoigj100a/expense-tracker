@@ -1,13 +1,13 @@
 <div class="container">
-    <form action="/search">
+    <form action="/record">
         <div class="input-group">
             <select name="category" id="category" class="form-control fas">
                 <option selected>選擇類別</option>
-                <option value="home"> &#xf015; 家居物業</option>
-                <option value="transportation"> &#xf5b6; 交通出行 </option>
-                <option value="entertainment"> &#xf582; 休閒娛樂</option>
-                <option value="food"> &#xf2e7; 餐飲食品</option>
-                <option value="other"> &#xf304; 其他</option>
+                <option value="home"{{#if (eq filter 'home')}}selected{{/if}}> &#xf015; 家居物業</option>
+                <option value="transportation"{{#if (eq filter 'transportation')}}selected{{/if}}> &#xf5b6; 交通出行 </option>
+                <option value="entertainment"{{#if (eq filter 'entertainment')}}selected{{/if}}> &#xf582; 休閒娛樂</option>
+                <option value="food"{{#if (eq filter 'food')}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
+                <option value="other"{{#if (eq filter 'other')}}selected{{/if}}> &#xf304; 其他</option>
             </select>
             <button type="submit" class="btn">送出</button>
         </div>

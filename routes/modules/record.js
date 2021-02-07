@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const Record =require('../../models/record')
-const Category =require('../../models/category')
+const Record = require('../../models/record')
+const Category = require('../../models/category')
 
 //路由
 router.get('/new', (req, res) => {
@@ -34,8 +34,8 @@ router.get('/:id/edit', async (req, res) => {
         }).catch(error => console.log(error))
 })
 
-router.put('/:id',async (req, res) => {
-    const count = await Record.countDocuments({}).exec()
+router.put('/:id', async (req, res) => {
+    // const count = await Record.countDocuments({}).exec()
     const id = req.params.id
     const { name, category, amount } = req.body
     // console.log(req.body)
@@ -70,8 +70,32 @@ router.delete('/:id', (req, res) => {
 
 })
 
-router.get('/search/:category', (req, res) => {
-    res.render('index')
+//篩選器
+router.get('/', async (req, res) => {
+    const categoryList = await Category.find().lean().exec()
+    const filter = req.query.category
+    if (!filter) return res.redirect('/')
+    Record.find({ category: filter })
+        .lean()
+        .then(records => {
+            let totalAmount = 0
+            let category = ""
+            records.forEach(record => {
+                totalAmount += record.amount
+                categoryList.forEach(
+                    (categories) => {
+                        if (categories.cName == record.category) {
+                            category = categories.cIconI
+                            record.icon = category
+                            return category
+                        }
+                    }
+                )
+            })
+
+            res.render('index', { records, totalAmount, filter })
+        })
+        .catch(error => console.log(error))
 })
 
 module.exports = router

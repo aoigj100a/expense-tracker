@@ -6,14 +6,14 @@ const categoryList = require('./categoryList.json').category
 
 db.once('open', () => {
     console.log('MongoDB connected category!')
-    Category.insertMany(categoryList,(err, docs)=> {
+    Category.insertMany(categoryList,async (err, docs)=> {
             if (err) {
-                console.log(err);
+                await console.log(err);
             }else{
-                console.log('儲存成功:', docs)
+                await console.log('儲存成功:', docs)
             }
-            db.close(()=>{
-                console.log('db closed')
+            db.close(async ()=>{
+                await console.log('db closed')
             })
         })
 })

@@ -4,16 +4,16 @@ const db = require('../../config/mongoose')
 
 const recordList = require('./recordList').record
 
-db.once('open',()=>{
+db.once('open', () => {
     console.log('MongoDB connected record!')
-    Record.insertMany(recordList,(err,docs)=>{
+    Record.insertMany(recordList, async (err, docs) => {
         if (err) {
-            console.log(err);
-        }else{
-            console.log('儲存成功:', docs)
+            await console.log(err);
+        } else {
+            await console.log('儲存成功:', docs)
         }
-        db.close(()=>{
-            console.log('db closed')
+        db.close(async () => {
+            await console.log('db closed')
         })
 
     })
