@@ -22,16 +22,16 @@
             <div><h5><i class="{{this.icon}}"></i>{{this.name}}</h5></div>
             <div><h5>{{this.amount}}</h5></div>
             <div>
-                <a class="btn" href="/edit/{{this.id}}">
+                <a class="btn" href="/record/edit/{{this.id}}">
                     <i class="fas fa-edit"></i>
                 </a>
-                <a class="btn" href="/delete/{{this.id}}">
+                <a class="btn" href="/record/delete/{{this.id}}">
                     <i class="fas fa-minus"></i>
                 </a>
             </div>
         </li>
         {{/each}}
         <div class="d-flex justify-content-center">
-            <a class="button my-auto" href="/new"></a>
+            <a class="button my-auto" href="/record/new"></a>
         </div>
 </div>
