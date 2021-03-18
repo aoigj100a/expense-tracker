@@ -1,8 +1,12 @@
 <div class="container">
     <br>
-    <form action="/record/{{Record.id}}?_method=DELETE" class="de-cont" method="POST">
+    <form action="/record/{{Record._id}}?_method=DELETE" class="de-cont" method="POST">
         <h5>要刪除【{{Record.name}}】項目嗎？</h5>
-        <button type="submit" class="btn btn-success">確定</button>
+        <div>
+            <button type="submit" class="btn btn-success">確定</button>
+            <a href="/" class="btn btn-warning">返回</a>
+        </div>
+
     </form>
     <br>
 </div>

@@ -7,18 +7,22 @@ const Category = require('../../models/category')
 router.get('/new', (req, res) => {
     res.render('new')
 })
-router.post('/new', async (req, res) => {
+router.post('/new', (req, res) => {
+    const userId = req.user._id
+    console.log('userId', userId)
     const { name, date, category, amount } = req.body
-    return Record.create({ name, date, category, amount })
+    console.log(req.body)
+    return Record.create({ userId, name, date, category, amount })
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })
 
 // 打造登入系統之後 修改功能與刪除功能都要修正
 router.get('/:id/edit', async (req, res) => {
-    const id = req.params.id
+    const userId = req.user._id
+    const _id = req.params.id
     const categoryList = await Category.find().lean().exec()
-    Record.findOne({ id: id }).lean()
+    Record.findOne({ _id, userId }).lean()
         .then(record => {
             let _category = ""
             categoryList.forEach((acategory) => {
@@ -33,13 +37,13 @@ router.get('/:id/edit', async (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    const id = req.params.id
+    const userId = req.user._id
+    const _id = req.params.id
+    // console.log('req.body', req.body, 'req.params.id', req.params.id)
     const { name, category, amount } = req.body
-    // console.log(req.body)
-    Record.findOne({ id: id })
+
+    Record.findOne({ _id, userId })
         .then(record => {
-            //有修改的id bug 待修正
-            //let newId = ""
             record.name = name
             record.category = category
             record.amount = amount
@@ -50,17 +54,18 @@ router.put('/:id', (req, res) => {
 })
 
 router.get('/:id/delete', (req, res) => {
-    // console.log(req.params)
-    const id = req.params.id
-    Record.findOne({ id: id }).lean()
+    const userId = req.user._id
+    const _id = req.params.id
+    Record.findOne({ _id, userId }).lean()
         .then(Record => res.render('delete', { Record }))
         .catch(error => console.log(error))
 
 })
 
 router.delete('/:id', (req, res) => {
-    const id = req.params.id
-    return Record.findOne({ id: id })
+    const userId = req.user._id
+    const _id = req.params.id
+    return Record.findOne({ _id, userId })
         .then(record => record.remove())
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
