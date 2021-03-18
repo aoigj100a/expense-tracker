@@ -13,7 +13,6 @@ router.get('/', async (req, res) => {
             let totalAmount = 0
             let category = ""
             records.forEach(record => {
-                console.log('record', record)
                 totalAmount += record.amount
                 categoryList.forEach(
                     (categories) => {
