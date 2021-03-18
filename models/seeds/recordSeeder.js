@@ -4,6 +4,7 @@ const db = require('../../config/mongoose')
 
 const recordList = require('./recordList').record
 
+// await是無效的code
 db.once('open', () => {
     console.log('MongoDB connected record!')
     Record.insertMany(recordList, async (err, docs) => {

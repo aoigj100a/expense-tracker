@@ -3,7 +3,7 @@ const Category = require('../category')
 const db = require('../../config/mongoose')
 
 const categoryList = require('./categoryList.json').category
-
+// await是無效的code
 db.once('open', () => {
     console.log('MongoDB connected category!')
     Category.insertMany(categoryList,async (err, docs)=> {

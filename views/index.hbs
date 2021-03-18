@@ -4,7 +4,7 @@
     <div class="con-body align-self-stretch">
         <form action="/record">
             <div class="input-group pt-4">
-                <select name="category" id="category" class="form-control fas">
+                <select name="category" id="category" class="form-control fas" onchange="this.form.submit()">
                     <option selected>選擇類別</option>
                     <option value="home" {{#if (eq filter 'home' )}}selected{{/if}}> &#xf015; 家居物業</option>
                     <option value="transportation" {{#if (eq filter 'transportation' )}}selected{{/if}}> &#xf5b6; 交通出行
@@ -14,7 +14,6 @@
                     <option value="food" {{#if (eq filter 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
                     <option value="other" {{#if (eq filter 'other' )}}selected{{/if}}> &#xf304; 其他</option>
                 </select>
-                <button type="submit" class="btn">送出</button>
             </div>
         </form>
         <div class="total-amount">
@@ -31,10 +30,10 @@
                     
                 
                 <div>
-                    <a class="btn" href="/record/{{this.id}}/edit">
+                    <a class="btn" href="/record/{{this._id}}/edit">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="btn" href="/record/{{this.id}}/delete">
+                    <a class="btn" href="/record/{{this._id}}/delete">
                         <i class="fas fa-minus"></i>
                     </a>
                 </div>

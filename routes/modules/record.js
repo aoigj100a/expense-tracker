@@ -4,19 +4,17 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
-//路由
 router.get('/new', (req, res) => {
     res.render('new')
 })
 router.post('/new', async (req, res) => {
-    const count = await Record.countDocuments({}).exec()
-    const id = count + 1
     const { name, date, category, amount } = req.body
-    return Record.create({ id, name, date, category, amount })
+    return Record.create({ name, date, category, amount })
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })
 
+// 打造登入系統之後 修改功能與刪除功能都要修正
 router.get('/:id/edit', async (req, res) => {
     const id = req.params.id
     const categoryList = await Category.find().lean().exec()
@@ -34,8 +32,7 @@ router.get('/:id/edit', async (req, res) => {
         }).catch(error => console.log(error))
 })
 
-router.put('/:id', async (req, res) => {
-    // const count = await Record.countDocuments({}).exec()
+router.put('/:id', (req, res) => {
     const id = req.params.id
     const { name, category, amount } = req.body
     // console.log(req.body)

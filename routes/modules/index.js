@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const Record =require('../../models/record')
-const Category =require('../../models/category')
+const Record = require('../../models/record')
+const Category = require('../../models/category')
 
 //首頁
+// totalAmount 不能輸入負值
 router.get('/', async (req, res) => {
     const categoryList = await Category.find().lean().exec()
     Record.find().lean()
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
             let totalAmount = 0
             let category = ""
             records.forEach(record => {
+                console.log('record', record)
                 totalAmount += record.amount
                 categoryList.forEach(
                     (categories) => {
