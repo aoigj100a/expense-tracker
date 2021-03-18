@@ -8,7 +8,7 @@ const usePassport = require('./config/passport')
 const routes = require('./routes')
 
 const app = express()
-const port =  process.env.PORT || 3000
+const port = process.env.PORT || 3000
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main', extname: '.hbs', helpers: {
@@ -29,11 +29,19 @@ app.use(session({
     secret: 'ThisIsMySecret',
     resave: false,
     saveUninitialized: true
-  }))
+}))
 
 require('./config/mongoose')
 
 usePassport(app)
+
+app.use((req, res, next) => {
+    console.log(req.user)
+    res.locals.isAuthenticated = req.isAuthenticated()
+    res.locals.user = req.user
+    next()
+})
+
 app.use(routes)
 
 app.listen(port, () => {
