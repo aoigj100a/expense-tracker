@@ -49,7 +49,6 @@ router.post('/register', (req, res) => {
         }
 
     })
-
 })
 
 router.get('/login', (req, res) => {

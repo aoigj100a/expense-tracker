@@ -8,7 +8,8 @@ const Category = require('../../models/category')
 // totalAmount 不能輸入負值
 router.get('/', async (req, res) => {
     const categoryList = await Category.find().lean().exec()
-    Record.find().lean()
+    const userId = req.user._id
+    Record.find({userId}).lean()
         .then(records => {
             let totalAmount = 0
             let category = ""

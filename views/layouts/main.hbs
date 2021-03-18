@@ -16,11 +16,11 @@
     <header>
         <nav class="navbar navbar-light py-4">
             <div class="container-fluid">
-                <a href="/">{{#if isAuthenticated}}{{ user.name}} 的 {{/if}}家庭記帳本</a>
+                <a href="/">{{#if isAuthenticated}}{{ user.name }} 的 {{/if}}家庭記帳本</a>
                 <div>
                     {{#if isAuthenticated}}
 
-                    <a id="login" class="text-light ml-3" href="/user/login">
+                    <a id="login" class="text-light ml-3" href="/user/logout">
                         <i class="fas fa-user-circle"></i>
                         登出
                     </a>
