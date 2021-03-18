@@ -15,6 +15,7 @@ module.exports = app => {
         // 3.判斷密碼 （還要判斷使用者輸入的內容加鹽後是否相符）
         User.findOne({ email })
             .then(user => {
+                console.log('user', user)
                 if (!user) {
                     return done(null, false, { message: 'That email is not registered!' })
                 }
