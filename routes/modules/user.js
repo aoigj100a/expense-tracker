@@ -9,7 +9,6 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-    // res.render('register')
     const { name, email, password, confirmPassword } = req.body
     const errors = []
     if (!name || !email || !password || !confirmPassword) {
@@ -57,12 +56,14 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/user/login'
+    failureRedirect: '/user/login',
+    ailureFlash: true,
+    failureFlash: true,
 }))
 
 router.get('/logout', (req, res) => {
     req.logout()
     res.redirect('/user/login')
-  })
+})
 
 module.exports = router
