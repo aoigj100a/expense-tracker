@@ -51,18 +51,20 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
+    req.flash("warning_msg", "請登入帳號")
     res.render('login')
 })
 
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/user/login',
-    ailureFlash: true,
-    failureFlash: true,
-}))
+router.post("/login", (req, res, next) => {
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/users/login",
+    })(req, res, next);
+  });
 
 router.get('/logout', (req, res) => {
     req.logout()
+    req.flash("success_msg", "你已成功登出")
     res.redirect('/user/login')
 })
 

@@ -46,7 +46,6 @@ app.use((req, res, next) => {
 })
 
 app.use((req, res, next) => {
-    console.log(req.user)
     res.locals.isAuthenticated = req.isAuthenticated()
     res.locals.user = req.user
     next()

@@ -9,9 +9,7 @@ router.get('/new', (req, res) => {
 })
 router.post('/new', (req, res) => {
     const userId = req.user._id
-    console.log('userId', userId)
     const { name, date, category, amount } = req.body
-    console.log(req.body)
     return Record.create({ userId, name, date, category, amount })
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
@@ -30,7 +28,6 @@ router.get('/:id/edit', async (req, res) => {
                     _category = acategory.cIconCss
                     record.icon = _category
                 }
-                // console.log(record.icon)
             })
             res.render('edit', { record })
         }).catch(error => console.log(error))
@@ -39,7 +36,6 @@ router.get('/:id/edit', async (req, res) => {
 router.put('/:id', (req, res) => {
     const userId = req.user._id
     const _id = req.params.id
-    // console.log('req.body', req.body, 'req.params.id', req.params.id)
     const { name, category, amount } = req.body
 
     Record.findOne({ _id, userId })
