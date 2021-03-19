@@ -8,6 +8,9 @@ const RecordSchema = new Schema({
     index: true,
     required: true
   },
+  merchant: {
+    type: String,
+  },
   name: {
     type: String,
     required: true

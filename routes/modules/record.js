@@ -9,13 +9,12 @@ router.get('/new', (req, res) => {
 })
 router.post('/new', (req, res) => {
     const userId = req.user._id
-    const { name, date, category, amount } = req.body
-    return Record.create({ userId, name, date, category, amount })
+    const { merchant, name, date, category, amount } = req.body
+    return Record.create({ userId, merchant, name, date, category, amount })
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
 })
 
-// 打造登入系統之後 修改功能與刪除功能都要修正
 router.get('/:id/edit', async (req, res) => {
     const userId = req.user._id
     const _id = req.params.id
