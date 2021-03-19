@@ -8,6 +8,10 @@ const flash = require('connect-flash')
 const usePassport = require('./config/passport')
 const routes = require('./routes')
 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+  }
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -27,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 app.use(session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
