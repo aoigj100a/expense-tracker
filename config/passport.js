@@ -1,4 +1,5 @@
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 const LocalStrategy = require('passport-local').Strategy
 
@@ -13,16 +14,20 @@ module.exports = app => {
         // 1.根據email去找到使用者
         // 2.判斷user 是否相符
         // 3.判斷密碼 （還要判斷使用者輸入的內容加鹽後是否相符）
+        // 4.使用bcrypt.compare
         User.findOne({ email })
             .then(user => {
                 if (!user) {
                     return done(null, false, { message: 'That email is not registered!' })
                 }
                 if (user.password !== password) {
-                    return done(null, false, { message: 'Email or Password incorrect.' })
-                }
-                return done(null, user)
-            })
+                    return bcrypt.compare(password, user.password).then(isMatch => {
+                        if (!isMatch) {
+                            return done(null, false, { message: 'Email or Password incorrect.' })
+                        }
+                        return done(null, user)
+                    })
+                }})
             .catch(err => done(err, false))
         //序列反序列
         passport.serializeUser((user, done) => {
