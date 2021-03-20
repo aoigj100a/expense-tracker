@@ -11,11 +11,14 @@
                     </option>
                     <option value="entertainment" {{#if (eq filter 'entertainment' )}}selected{{/if}}> &#xf582; 休閒娛樂
                     </option>
-                    <option value="food" {{#if (eq filter 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
-                    <option value="other" {{#if (eq filter 'other' )}}selected{{/if}}> &#xf304; 其他</option>
+                    <option value="food" {{#if (eq category 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
+                    <option value="other" {{#if (eq category 'other' )}}selected{{/if}}> &#xf304; 其他</option>
                 </select>
-
-               
+                {{!-- 月份篩選 --}}
+                {{!-- <select name="date" id="date" class="form-control fas" onchange="this.form.submit()">
+                    <option selected>月份</option>
+                    <option value="home" {{#if (eq filter 'home' )}}selected{{/if}}> &#xf015; 家居物業</option>
+                </select> --}}
             </div>
         </form>
         <div class="total-amount">
