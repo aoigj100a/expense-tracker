@@ -36,45 +36,47 @@ db.once('open', () => {
                     const userId = user._id
                     return Record.create(
                         {
-                            "merchant":"菜市場",
-                            "name":"食材",
-                            "date":"2021-02-03T11:05",
+                            userId,
+                            "merchant": "菜市場",
+                            "name": "食材",
+                            "date": "2021-02-03T11:05",
                             "category": "food",
-                            "amount":100,
-                            userId
-                          },
-                          {
-                            "merchant":"牙醫診所",
-                            "name":"看醫生",
-                            "date":"2021-02-04T14:17",
+                            "amount": 100
+
+                        },
+                        {
+                            userId,
+                            "merchant": "牙醫診所",
+                            "name": "看醫生",
+                            "date": "2021-02-04T14:17",
                             "category": "home",
-                            "amount":150,
-                            userId
-                          },
-                          {
-                            "merchant":"綠豆椪餅舖",
-                            "name":"伴手禮",
-                            "date":"2021-02-04T21:03",
+                            "amount": 150
+                        },
+                        {
+                            userId,
+                            "merchant": "綠豆椪餅舖",
+                            "name": "伴手禮",
+                            "date": "2021-02-04T21:03",
                             "category": "other",
-                            "amount":600,
-                            userId
-                          },
-                          {
-                            "merchant":"麵店",
-                            "name":"晚餐",
-                            "date":"2021-02-05T19:30",
+                            "amount": 600,
+                        },
+                        {
+                            userId,
+                            "merchant": "麵店",
+                            "name": "晚餐",
+                            "date": "2021-02-05T19:30",
                             "category": "food",
-                            "amount":100,
-                            userId
-                          },
-                          {
-                            "merchant":"綠蓋",
-                            "name":"派對汽水",
-                            "date":"2021-02-05T20:00",
+                            "amount": 100
+                        },
+                        {
+                            userId,
+                            "merchant": "綠蓋",
+                            "name": "派對汽水",
+                            "date": "2021-02-05T20:00",
                             "category": "entertainment",
-                            "amount":75,
-                            userId
-                          }
+                            "amount": 75,
+
+                        }
                     )
                 })
         )

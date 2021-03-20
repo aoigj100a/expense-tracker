@@ -9,7 +9,7 @@ const Category = require('../../models/category')
 router.get('/', async (req, res) => {
     const categoryList = await Category.find().lean().exec()
     const userId = req.user._id
-    Record.find({userId}).lean()
+    Record.find({ userId }).lean()
         .then(records => {
             let totalAmount = 0
             let category = ""
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
                     }
                 )
             })
-            res.render('index', { records, totalAmount,userId })
+            res.render('index', { records, totalAmount, userId })
         }).catch(error => console.log(error))
 
 })

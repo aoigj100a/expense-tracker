@@ -21,12 +21,10 @@ const RecordSchema = new Schema({
   },
   category: {
     type: String,
-    unique: true,
-    required: true
+    required: true,
   },
   amount: {
     type: Number,
-    unique: true,
     required: true
   },
 })
