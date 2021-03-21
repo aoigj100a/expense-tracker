@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
         record.icon = category.cIconI
     })
     res.render('index', { records, totalAmount, userId })
-        .catch(error => console.log(error))
 })
 
 module.exports = router

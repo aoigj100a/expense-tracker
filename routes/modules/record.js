@@ -68,31 +68,22 @@ router.delete('/:id', (req, res) => {
 })
 
 //篩選器
-router.get('/', async (req, res) => {
-    const categoryList = await Category.find().lean().exec()
+router.get('/filter', async (req, res) => {
     const filter = req.query.category
-    if (!filter) return res.redirect('/')
-    Record.find({ category: filter })
-        .lean()
-        .then(records => {
-            let totalAmount = 0
-            let category = ""
-            records.forEach(record => {
-                totalAmount += record.amount
-                categoryList.forEach(
-                    (categories) => {
-                        if (categories.cName == record.category) {
-                            category = categories.cIconI
-                            record.icon = category
-                            return category
-                        }
-                    }
-                )
-            })
+    const userId = req.user._id
+    const categoryList = await Category.find().lean().exec()
+    const records = await Record.find({ userId, category: filter }).lean().exec()
+    let totalAmount = 0
 
-            res.render('index', { records, totalAmount, filter })
-        })
-        .catch(error => console.log(error))
+    if (!filter) return res.redirect('/')
+
+    records.forEach(record => {
+        totalAmount += record.amount
+        const category = categoryList.find(category => category.cName === record.category)
+        record.icon = category.cIconI
+    })
+    res.render('index', { records, totalAmount, userId, filter })
+
 })
 
 module.exports = router
