@@ -69,6 +69,7 @@ router.delete('/:id', (req, res) => {
 
 //篩選器
 router.get('/filter', async (req, res) => {
+<<<<<<< HEAD
     let year = new Date().getFullYear()
     let month = req.query.month === '月份' ? new Date().getMonth() : req.query.month || new Date().getMonth()
     const date = `${year}-${month}-01`
@@ -87,6 +88,23 @@ router.get('/filter', async (req, res) => {
     })
     res.render('index', { records, totalAmount, userId, category, month })
 
+=======
+    const filter = req.query.category
+    const userId = req.user._id
+    const categoryList = await Category.find().lean().exec()
+    const records = await Record.find({ userId, category: filter }).lean().exec()
+    let totalAmount = 0
+
+    if (!filter) return res.redirect('/')
+
+    records.forEach(record => {
+        totalAmount += record.amount
+        const category = categoryList.find(category => category.cName === record.category)
+        record.icon = category.cIconI
+    })
+    res.render('index', { records, totalAmount, userId, filter })
+
+>>>>>>> 830ec65a2275e9eced007ae74af4fac11a6982a6
 })
 
 module.exports = router
