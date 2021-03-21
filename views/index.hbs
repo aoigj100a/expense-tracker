@@ -2,7 +2,7 @@
     <a href="/"><img class="p-4" src="/img/icon.png" alt="" style="width: 200px;"></a>
     
     <div class="con-body align-self-stretch">
-        <form action="/record">
+        <form action="/record/filter">
             <div class="input-group pt-4">
                 <select name="category" id="category" class="form-control fas" onchange="this.form.submit()">
                     <option selected>選擇類別</option>
@@ -11,8 +11,8 @@
                     </option>
                     <option value="entertainment" {{#if (eq filter 'entertainment' )}}selected{{/if}}> &#xf582; 休閒娛樂
                     </option>
-                    <option value="food" {{#if (eq category 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
-                    <option value="other" {{#if (eq category 'other' )}}selected{{/if}}> &#xf304; 其他</option>
+                    <option value="food" {{#if (eq filter 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
+                    <option value="other" {{#if (eq filter 'other' )}}selected{{/if}}> &#xf304; 其他</option>
                 </select>
                 {{!-- 月份篩選 --}}
                 {{!-- <select name="date" id="date" class="form-control fas" onchange="this.form.submit()">
