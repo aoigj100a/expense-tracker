@@ -2,14 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const RecordSchema = new Schema({
-  userId: {  // 加入關聯設定
+  userId: { // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
     required: true
   },
   merchant: {
-    type: String,
+    type: String
   },
   name: {
     type: String,
@@ -21,15 +21,12 @@ const RecordSchema = new Schema({
   },
   category: {
     type: String,
-    required: true,
+    required: true
   },
   amount: {
     type: Number,
     required: true
-  },
+  }
 })
 const Record = mongoose.model('Record', RecordSchema)
 module.exports = Record
-
-
-

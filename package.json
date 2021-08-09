@@ -1,13 +1,16 @@
 {
   "name": "expense-tracker",
   "version": "1.0.0",
-  "description": "",
+  "devDependencies": {
+    "standard": "*"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
-    "test": "standard && node app.js"
+    "test": "standard && node app.js",
+    "stand":"standard --fix"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +26,9 @@
     "mongoose": "^5.11.14",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
-    "passport-local": "^1.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
     "standard": "^16.0.3"
   }
 }
