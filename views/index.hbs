@@ -1,20 +1,38 @@
 <div class="container py-5 d-flex justify-content-between align-items-center flex-column">
     <a href="/"><img class="p-4" src="/img/icon.png" alt="" style="width: 200px;"></a>
-    
+
     <div class="con-body align-self-stretch">
-        <form action="/record">
+        <form action="/record/filter">
             <div class="input-group pt-4">
-                <select name="category" id="category" class="form-control fas">
+                {{!-- 種類篩選器 --}}
+                <select name="category" id="category" class="form-control fas" onchange="this.form.submit()">
                     <option selected>選擇類別</option>
-                    <option value="home" {{#if (eq filter 'home' )}}selected{{/if}}> &#xf015; 家居物業</option>
-                    <option value="transportation" {{#if (eq filter 'transportation' )}}selected{{/if}}> &#xf5b6; 交通出行
+                    <option value="home" {{#if (eq category 'home' )}}selected{{/if}}> &#xf015; 家居物業</option>
+                    <option value="transportation" {{#if (eq category 'transportation' )}}selected{{/if}}> &#xf5b6; 交通出行
                     </option>
-                    <option value="entertainment" {{#if (eq filter 'entertainment' )}}selected{{/if}}> &#xf582; 休閒娛樂
+                    <option value="entertainment" {{#if (eq category 'entertainment' )}}selected{{/if}}> &#xf582; 休閒娛樂
                     </option>
-                    <option value="food" {{#if (eq filter 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
-                    <option value="other" {{#if (eq filter 'other' )}}selected{{/if}}> &#xf304; 其他</option>
+                    <option value="food" {{#if (eq category 'food' )}}selected{{/if}}> &#xf2e7; 餐飲食品</option>
+                    <option value="other" {{#if (eq category 'other' )}}selected{{/if}}> &#xf304; 其他</option>
                 </select>
-                <button type="submit" class="btn">送出</button>
+                {{!-- 日期篩選器第一版 --}}
+                <select name="month" id="month" class="form-control fas" onchange="this.form.submit()">
+                    <option selected>月份</option>
+                    <option value="1" {{#if (eq month '1' )}}selected{{/if}}>2021年1月</option>
+                    <option value="2" {{#if (eq month '2' )}}selected{{/if}}>2021年2月</option>
+                    <option value="3" {{#if (eq month '3' )}}selected{{/if}}>2021年3月</option>
+                    <option value="4" {{#if (eq month '4' )}}selected{{/if}}>2021年4月</option>
+                    <option value="5" {{#if (eq month '5' )}}selected{{/if}}>2021年5月</option>
+                    <option value="6" {{#if (eq month '6' )}}selected{{/if}}>2021年6月</option>
+                    <option value="7" {{#if (eq month '7' )}}selected{{/if}}>2021年7月</option>
+                    <option value="8" {{#if (eq month '8' )}}selected{{/if}}>2021年8月</option>
+                    <option value="9" {{#if (eq month '9' )}}selected{{/if}}>2021年9月</option>
+                    <option value="10" {{#if (eq month '10' )}}selected{{/if}}>2021年10月</option>
+                    <option value="11" {{#if (eq month '11' )}}selected{{/if}}>2021年11月</option>
+                    <option value="12" {{#if (eq month '12' )}}selected{{/if}}>2021年12月</option>
+                </select>
+
+
             </div>
         </form>
         <div class="total-amount">
@@ -27,14 +45,14 @@
                 <div>
                     <h5><i class="{{this.icon}}"></i>{{this.name}}:{{this.amount}}</h5>
                 </div>
-                
-                    
-                
+
+
+
                 <div>
-                    <a class="btn" href="/record/{{this.id}}/edit">
+                    <a class="btn" href="/record/{{this._id}}/edit">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="btn" href="/record/{{this.id}}/delete">
+                    <a class="btn" href="/record/{{this._id}}/delete">
                         <i class="fas fa-minus"></i>
                     </a>
                 </div>

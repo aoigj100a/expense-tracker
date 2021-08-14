@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老爸的私房錢</title>
+    <title>家庭記帳本：老爸的私房錢</title>
     <link rel="icon" href="/img/icon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -15,10 +15,37 @@
 
     <header>
         <nav class="navbar navbar-light py-4">
-            <div class="container-fluid"></div>
-                <a href="/">家庭記帳本</a>
+            <div class="container-fluid">
+                <a href="/">{{#if isAuthenticated}}{{ user.name }} 的 {{/if}}家庭記帳本</a>
+                <div>
+                    {{#if isAuthenticated}}
+
+                    <a id="login" class="text-light ml-3" href="/user/logout">
+                        <i class="fas fa-user-circle"></i>
+                        登出
+                    </a>
+
+                    {{else}}
+
+                    <a id="joinmeb" class="text-light" href="/user/register">
+                        <i class="fas fa-sign-in-alt"></i>
+                        註冊
+                    </a>
+
+                    <a id="login" class="text-light ml-3" href="/user/login">
+                        <i class="fas fa-user-circle"></i>
+                        登入
+                    </a>
+
+                    {{/if}}
+
+
+                </div>
             </div>
         </nav>
+
+
+
     </header>
 
     <main>

@@ -1,14 +1,14 @@
 const express = require('express')
-const router =  express.Router()
-
-
-//路由設定開始
+const router = express.Router()
 const index = require('./modules/index')
-// 將網址結構符合 / 字串的 request 導向 index 模組 
-router.use('/', index)
-
 const record = require('./modules/record')
-// 將網址結構符合 /record 字串的 request 導向 index 模組 
-router.use('/record', record)
+const user = require('./modules/user')
+const auth = require('./modules/auth')
+const { authenticator } = require('../middleware/auth')
+
+router.use('/user', user)
+router.use('/auth', auth)
+router.use('/record', authenticator, record)
+router.use('/', authenticator, index)
 
 module.exports = router
