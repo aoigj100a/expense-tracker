@@ -75,7 +75,6 @@ db.once('open', () => {
               date: '2021-02-05T20:00',
               category: 'entertainment',
               amount: 75
-
             }
           )
         })

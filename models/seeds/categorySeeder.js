@@ -1,4 +1,3 @@
-// 要新建 Category 所以載入進來
 const Category = require('../category')
 const db = require('../../config/mongoose')
 

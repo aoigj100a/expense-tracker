@@ -31,6 +31,8 @@
 11. passport-facebook v3.0.0
 12. passport-local v1.0.0
 13. express-session v1.17.1
+14. dotenv v8.2.0
+15. standard v16.0.3
 
 ## 安裝與執行步驟 (Installation and Execution)
 1. 將專案複製到本機 (兩種方法)

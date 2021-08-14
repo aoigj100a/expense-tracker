@@ -10,7 +10,7 @@
     "dev": "nodemon app.js",
     "seed": "node models/seeds/categorySeeder.js && node models/seeds/recordSeeder.js",
     "test": "standard && node app.js",
-    "stand":"standard --fix"
+    "stand": "standard --fix"
   },
   "keywords": [],
   "author": "",
@@ -26,9 +26,7 @@
     "mongoose": "^5.11.14",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
-    "passport-local": "^1.0.0"
-  },
-  "devDependencies": {
+    "passport-local": "^1.0.0",
     "standard": "^16.0.3"
   }
 }
