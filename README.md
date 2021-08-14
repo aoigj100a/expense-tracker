@@ -34,6 +34,8 @@
 14. dotenv v8.2.0
 15. standard v16.0.3
 
+    **.env環境變數不能夠被上傳到github，使用.env.example的方式做傳遞。**
+
 ## 安裝與執行步驟 (Installation and Execution)
 1. 將專案複製到本機 (兩種方法)
 > (1) 打開終端機輸入 
